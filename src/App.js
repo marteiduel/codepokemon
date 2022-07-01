@@ -3,7 +3,7 @@ import axios from "axios";
 import "./App.css";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   useEffect(() => {
     const getData = async () => {
@@ -29,7 +29,7 @@ function App() {
       <div className='tarjeta'>
         <div className='nombre'>{data.name}</div>
         <div className='linea'></div>
-        <img alt='pokemon' src={data.sprites.back_default} className='imagen' />
+        <img alt='pokemon' src={data.sprites.back_female} className='imagen' />
       </div>
     </div>
   );
