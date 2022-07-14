@@ -29,7 +29,13 @@ function App() {
       <div className='tarjeta'>
         <div className='nombre'>{data.name}</div>
         <div className='linea'></div>
-        <img alt='pokemon' src={data.sprites.back_female} className='imagen' />
+        <div className='areaPokemon'>
+          <img
+            alt='pokemon'
+            src={data.sprites.back_female}
+            className='imagen'
+          />
+        </div>
       </div>
     </div>
   );

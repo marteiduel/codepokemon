@@ -18,5 +18,10 @@
 }
 
 .linea{
+  border: 1px solid black;
+}
 
+.areaPokemon{
+  display: flex;
+  justify-content: center;
 }
