@@ -3,23 +3,23 @@ import axios from "axios";
 import "./App.css";
 import { FAAppletClient } from "./Util";
 
-
 function App() {
   const [data, setData] = useState(null);
   const [poke, setPoke] = useState("pikachu");
 
   let faAppletService = new FAAppletClient({
-    appletId: 'aHR0cHM6Ly9nZW51aW5lLXB1ZmZwdWZmLTY2YjA2ZS5uZXRsaWZ5LmFwcA==',
+    appletId: "aHR0cHM6Ly9nZW51aW5lLXB1ZmZwdWZmLTY2YjA2ZS5uZXRsaWZ5LmFwcA==",
   });
 
   const crearPokemon = () => {
+    console.log(data.name, "pokemonAEnviar");
     faAppletService.createEntity({
-      entity: 'pokemon',
+      entity: "pokemon",
       field_values: {
-        description: data.name
-      }
-    })
-  }
+        description: data.name,
+      },
+    });
+  };
 
   const onChangeHandler = (e) => {
     setPoke(e.target.value);
@@ -30,7 +30,7 @@ function App() {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${poke}`
         );
-        console.log(response.data,);
+        console.log(response.data);
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -95,7 +95,6 @@ function App() {
           <p>metapod</p>
           <p>kakuna</p>
           <p>weedle</p>
-
         </div>
       </div>
     </div>
