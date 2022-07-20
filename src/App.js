@@ -1,10 +1,25 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
+import { FAAppletClient } from "./Util";
+
 
 function App() {
   const [data, setData] = useState(null);
   const [poke, setPoke] = useState("pikachu");
+
+  let faAppletService = new FAAppletClient({
+    appletId: 'aHR0cHM6Ly9nZW51aW5lLXB1ZmZwdWZmLTY2YjA2ZS5uZXRsaWZ5LmFwcA==',
+  });
+
+  const crearPokemon = () => {
+    faAppletService.createEntity({
+      entity: 'pokemon',
+      field_values: {
+        description: data.name
+      }
+    })
+  }
 
   const onChangeHandler = (e) => {
     setPoke(e.target.value);
@@ -15,7 +30,7 @@ function App() {
         const response = await axios.get(
           `https://pokeapi.co/api/v2/pokemon/${poke}`
         );
-        console.log(response.data);
+        console.log(response.data,);
         setData(response.data);
       } catch (error) {
         console.log(error);
@@ -53,7 +68,7 @@ function App() {
             id='pokename'
             onChange={onChangeHandler}
           />
-          <button onClick={Cambios}>Buscar</button>
+          <button onClick={Cambios}>Buscar Pokemon</button>
         </div>
         <div className='nombre'>{data.name}</div>
         <div className='linea'></div>
@@ -63,6 +78,24 @@ function App() {
             src={data.sprites.front_default}
             className='imagen'
           />
+        </div>
+        <button onClick={crearPokemon()}>Create Pokemon</button>
+        <div>
+          **pokemons to try**
+          <p>bulbasaur</p>
+          <p>ivysaur</p>
+          <p>venusaur</p>
+          <p>charmander</p>
+          <p>charmeleon</p>
+          <p>charizard</p>
+          <p>squirtle</p>
+          <p>wartortle</p>
+          <p>blastoise</p>
+          <p>caterpie</p>
+          <p>metapod</p>
+          <p>kakuna</p>
+          <p>weedle</p>
+
         </div>
       </div>
     </div>

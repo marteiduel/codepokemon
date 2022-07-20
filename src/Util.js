@@ -1,9 +1,5 @@
 let iframeQueryParams = getIframeQueryParams();
 
-// FAClient = new FAAppletClient({
-//   appletId: "aHR0cHM6Ly9nZW51aW5lLXB1ZmZwdWZmLTY2YjA2ZS5uZXRsaWZ5LmFwcC8=",
-// });
-
 var FAAppletClient = (function () {
   function FAAppletClient({ appletId } = {}) {
     this.registeredEvents = {};
